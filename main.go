@@ -18,6 +18,8 @@ import (
 var off bool
 var tcp bool
 var tcp_port int
+var http bool
+var http_port int
 var raw bool
 var pixels int
 var spi_device string
@@ -27,8 +29,12 @@ func main() {
 	// Initialize the app and parse the command line flags
 	flag.BoolVar(&off, "off", false, "Turns all LED pixels off")
 	flag.BoolVar(&tcp, "tcp", false, "Listen on a TCP port for remote commands")
-	flag.BoolVar(&raw, "raw", false, "Accept raw LED input over TCP. Also requires TCP to be enabled.")
 	flag.IntVar(&tcp_port, "port", 9123, "Port to bind a TCP server on to listen for remote commands")
+
+	flag.BoolVar(&http, "http", false, "Enable or disable the HTTP server and interface")
+	flag.IntVar(&http_port, "port", 9123, "Port to bind a TCP server on to listen for remote commands")
+
+	flag.BoolVar(&raw, "raw", false, "Accept raw LED input over TCP. Also requires TCP to be enabled.")
 	flag.IntVar(&pixels, "pixels", 25, "Number of LED pixels in the strand")
 	flag.StringVar(&spi_device, "spi", "/dev/spidev0.0", "SPI device to use")
 
