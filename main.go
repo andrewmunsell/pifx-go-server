@@ -118,7 +118,7 @@ func ProcessCommand(strand *pifx.Strand, cmd *pifx.PixelCommand, anims []animati
 
 		if ok {
 			for i, p := range payload {
-				strand.Set(cmd.Offset+i, *p)
+				strand.Set(i, *p)
 			}
 		}
 	case 1:
