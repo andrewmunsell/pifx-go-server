@@ -122,16 +122,19 @@ func ProcessCommand(strand *pifx.Strand, cmd *pifx.PixelCommand, anims []animati
 			}
 		}
 	case 1:
-		payload, ok := cmd.Payload.(*pifx.Pixel)
+		strand.Wipe(pifx.Pixel{0, 0, 0})
 
-		if ok {
-			strand.Wipe(*payload)
-		}
+		return make([]animations.Animation, 0)
 	case 2:
 		payload, ok := cmd.Payload.([]animations.Animation)
 
 		if ok {
-			return payload
+			newAnimations := make([]animations.Animation, len(anims)+len(payload))
+
+			copy(newAnimations, anims)
+			copy(newAnimations[len(anims):], payload)
+
+			return newAnimations
 		}
 	}
 
