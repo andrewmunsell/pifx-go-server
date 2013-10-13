@@ -32,7 +32,7 @@ func main() {
 	flag.IntVar(&tcp_port, "port", 9123, "Port to bind a TCP server on to listen for remote commands")
 
 	flag.BoolVar(&http, "http", false, "Enable or disable the HTTP server and interface")
-	flag.IntVar(&http_port, "port", 9123, "Port to bind a TCP server on to listen for remote commands")
+	flag.IntVar(&http_port, "http_port", 8080, "Port to bind a TCP server on to listen for remote commands")
 
 	flag.BoolVar(&raw, "raw", false, "Accept raw LED input over TCP. Also requires TCP to be enabled.")
 	flag.IntVar(&pixels, "pixels", 25, "Number of LED pixels in the strand")
