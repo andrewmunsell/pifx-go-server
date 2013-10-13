@@ -50,7 +50,7 @@ func main() {
 	// Setup the command channel. Anything that wants to change a pixel
 	// simply writes to the channel and the main Goroutine will automatically
 	// set the pixel and handle the timing.
-	commandChannel := make(chan *pifx.PixelCommand, pixels*4)
+	commandChannel := make(chan *pifx.PixelCommand)
 	rawChannel := make(chan []byte)
 
 	// Perform any "one off" actions that are specified
